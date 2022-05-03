@@ -4,13 +4,10 @@
 #include <QNetworkReply>
 #include <QUrl>
 #include <QUrlQuery>
-#include <fstream>
-#include <QString>
 #include <QEventLoop>
 #include <QPair>
 #include <QTime>
 #include <QStringRef>
-
 
 QString use_api::get_publicIP(){
     QString ip_adres;
@@ -60,47 +57,30 @@ QString use_api::get_prayerInfo(){
 
 QPair<QString,QString> use_api::get_data(){
     QString mainInfo = get_prayerInfo();
+    mainInfo.erase(mainInfo.begin(), mainInfo.begin() + 101);
+    QString val = QTime(QTime::currentTime()).toString("hh:mm");
 
-    //{"code":200,"status":"OK","results":{"datetime":[{"times":{"Imsak":"03:26","Sunrise":"06:11","Fajr":"03:36","Dhuhr":"13:40","Asr":"17:44","Sunset":"21:09","Maghrib":"21:33","Isha":"23:33","Midnight":"00:23"}
-    mainInfo.erase(mainInfo.begin(), mainInfo.begin() + 68);
-    QTime time(QTime::currentTime());
-    QString val = time.toString("hh:mm");
-    QPair<QString,QString> Imsak("Imsak", QStringRef(&mainInfo, 0, 5).toString());
-    if(val <= Imsak.second){
-        return Imsak;
-    }else{
-        mainInfo.erase(mainInfo.begin(), mainInfo.begin() + 18);
-        QPair<QString,QString> Sunrise("Sunrise", QStringRef(&mainInfo, 0, 5).toString());
-        if(val <= Sunrise.second){
-            return Sunrise;
-        }else{
-            mainInfo.erase(mainInfo.begin(), mainInfo.begin() + 18);
-            QPair<QString,QString> Fajr("Fajr", QStringRef(&mainInfo, 0, 5).toString());
-            if(val <= Fajr.second){
-                return Fajr;
-            }else{
-                mainInfo.erase(mainInfo.begin(), mainInfo.begin() + 18);
-                QPair<QString,QString> Dhuhr("Dhuhr", QStringRef(&mainInfo, 0, 5).toString());
-                if(val <= Dhuhr.second){
+          QPair<QString,QString> Fajr("Fajr", std::move(QStringRef(&mainInfo, 0, 5).toString()));
+           if(val <= Fajr.second){
+              return Fajr;
+           }else{
+               mainInfo.erase(mainInfo.begin(), mainInfo.begin() + 16);
+                QPair<QString,QString> Dhuhr("Dhuhr", std::move(QStringRef(&mainInfo, 0, 5).toString()));
+               if(val <= Dhuhr.second){
                     return Dhuhr;
                 }else{
-                    mainInfo.erase(mainInfo.begin(), mainInfo.begin() + 18);
-                    QPair<QString,QString> Asr("Asr", QStringRef(&mainInfo, 0, 5).toString());
+                    mainInfo.erase(mainInfo.begin(), mainInfo.begin() + 14);
+                    QPair<QString,QString> Asr("Asr", std::move(QStringRef(&mainInfo, 0, 5).toString()));
                     if(val <= Asr.second){
                         return Asr;
                     }else{
-                        mainInfo.erase(mainInfo.begin(), mainInfo.begin() + 18);
-                        QPair<QString,QString> Sunset("Sunset", QStringRef(&mainInfo, 0, 5).toString());
-                        if(val <= Sunset.second){
-                            return Sunset;
-                        }else{
-                            mainInfo.erase(mainInfo.begin(), mainInfo.begin() + 18);
-                            QPair<QString,QString> Magrib("Magrib", QStringRef(&mainInfo, 0, 5).toString());
+                           mainInfo.erase(mainInfo.begin(), mainInfo.begin() + 35);
+                            QPair<QString,QString> Magrib("Magrib", std::move(QStringRef(&mainInfo, 0, 5).toString()));
                             if(val <= Magrib.second){
                                 return Magrib;
                             }else{
-                                mainInfo.erase(mainInfo.begin(), mainInfo.begin() + 18);
-                                QPair<QString,QString> Isha("Isha", QStringRef(&mainInfo, 0, 5).toString());
+                               mainInfo.erase(mainInfo.begin(), mainInfo.begin() + 15);
+                                QPair<QString,QString> Isha("Isha", std::move(QStringRef(&mainInfo, 0, 5).toString()));
                                 if(val <= Isha.second){
                                     return Isha;
                                 }
@@ -108,12 +88,12 @@ QPair<QString,QString> use_api::get_data(){
                         }
                     }
                 }
-            }
-        }
-    }
 
 
-return QPair<QString,QString>("Error",mainInfo);
+
+
+
+return QPair<QString,QString>("Error:","No Network Connection");
 }
 
 

@@ -13,8 +13,9 @@ void gui::setInfo(){
 QPair<QString,QString> pair = use_api::get_data();
 ui->CurrentPrayer->setText(pair.first);
 ui->nextPrayer->setText(pair.second);
-
+prayerTime = std::move(pair.second);
 }
+
 
 gui::~gui()
 {

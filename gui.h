@@ -4,6 +4,9 @@
 #include <QWidget>
 
 
+static QString prayerTime;
+
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class gui; }
 QT_END_NAMESPACE
@@ -11,7 +14,6 @@ QT_END_NAMESPACE
 class gui : public QWidget
 {
     Q_OBJECT
-
 public:
     gui(QWidget *parent = nullptr);
     ~gui();
