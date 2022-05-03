@@ -19,9 +19,12 @@ QString use_api::get_publicIP(){
     eventLoop.exec();
     if (reply->error() == QNetworkReply::NoError) {
         //success
-        ip_adres = reply->readAll();
-
-
+       //Example ip {"ip":"00.00.000.00"}
+         QString jsonData(reply->readAll());
+         jsonData.erase((jsonData.begin() + jsonData.size() - 2),jsonData.end());
+         jsonData.erase(jsonData.begin(),jsonData.begin() + 7);
+         ip_adres = std::move(jsonData);
+         qDebug() << ip_adres;
         delete reply;
     }
     else {
@@ -93,7 +96,7 @@ QPair<QString,QString> use_api::get_data(){
 
 
 
-return QPair<QString,QString>("Error:","No Network Connection");
+return QPair<QString,QString>("Error:","No Network");
 }
 
 
