@@ -1,7 +1,7 @@
 # Muslim-Reminder-Project
 
-Android Application how provides indicated Prayer time by ip adress accuratly
+- The Android application provides the indicated prayer time by IP address accurately.
 
-Made with C++ and QT Framework
+- Made with C++ and the QT Framework
 
-Uses also openSSL
+- openSSL is used
