@@ -2,7 +2,7 @@
 
 - The Android and IOS application provide accurately indicated prayer times by IP address.
 
-- Made with C++ and the QT Framework
+- Made with C++ and the QT6
 
 - openSSL is used for the Android build
 
