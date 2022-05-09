@@ -9,7 +9,7 @@
 + Low stack memory usage
 + Almost No function overhead
 + Regulate Stack Memory
-+ Agressive but peacefull
++ Aggressive but peaceful
 + Low Ram Usage
 + Low Power Usage
 + Beautiful Adhan
