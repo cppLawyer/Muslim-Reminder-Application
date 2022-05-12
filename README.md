@@ -9,10 +9,8 @@
 + Low stack memory usage
 + Almost No function overhead
 + Regulate Stack Memory
-+ Aggressive but peaceful
 + Low Ram Usage
 + Low Power Usage
 + Beautiful Adhan
-+ Shows Accurate Prayer Times based on IP/Location
 + Shows How Many Minutes for the next prayer
 + Almost no CPU Usage
