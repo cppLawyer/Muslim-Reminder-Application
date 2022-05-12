@@ -1,6 +1,6 @@
 # Muslim-Reminder-Project
 
-- The Android and IOS application provide accurately indicated prayer times by IP address.
+- Application supports Android, IOS, Windows, macOS and provide accurately indicated prayer times by IP address.
 
 - Made with C++ and the QT6
 
