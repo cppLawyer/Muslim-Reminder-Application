@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/adhan">
+        <file>Adhan.mp3</file>
+    </qresource>
+</RCC>
