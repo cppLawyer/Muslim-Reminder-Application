@@ -6,7 +6,6 @@
 
 - openSSL is used for the Android build
 
-+ Low stack memory usage
 + Almost No function overhead
 + Regulate Stack Memory
 + Low Ram Usage
